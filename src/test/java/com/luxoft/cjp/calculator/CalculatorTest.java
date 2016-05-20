@@ -1,29 +1,59 @@
 package com.luxoft.cjp.calculator;
 
 import static org.junit.Assert.assertThat;
-
-import com.luxoft.cjp.calculator.Calculator;
 import static org.hamcrest.core.IsEqual.equalTo;
-import org.junit.Test;
-import org.junit.experimental.theories.DataPoints;
-import org.junit.experimental.theories.Theories;
-import org.junit.experimental.theories.Theory;
-import org.junit.runner.RunWith;
+import static org.hamcrest.core.IsNot.not;
+
+import org.junit.*;
 
 /**
- * Created by lucky on 26.04.16.
+ * Created by YPrivezentsev on 2016-04-
+ * 27.
  */
-@RunWith(Theories.class)
+
 public class CalculatorTest {
-    private Calculator calculator= new Calculator();
+    private Calculator calculatorEngine = new Calculator();
 
-    @DataPoints
-    public static int [] integerPoints = {1,2,18,42};
+    @BeforeClass
+    public static void initAll(){}
+    @AfterClass
+  public void tearDownAll(){}
 
-    @Theory
-    public void testForTwoNumbers(Integer a, Integer b){
-        assertThat(calculator.sum(a,b), equalTo(a + b));
+    @Before
+    public void init(){}
+    @After
+    public void tearDown(){}
+
+    @Test
+    public void testSubtraction(){
+        int difference = calculatorEngine.difference(42, 18);
+        assertThat(difference, equalTo(24));
+        assertThat(difference, not(4));
     }
 
+    @Test
+    public void testDivision () throws DivisionByZero {
+        assertThat(calculatorEngine.divide(5,2),equalTo(2));
+    }
 
+    @Test(expected = DivisionByZero.class)
+    public void testDivisionException () throws DivisionByZero {
+        calculatorEngine.divide(5,0);
+    }
+
+//    @Test
+    @Test(timeout = 20)
+    public void testDuration(){
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            System.err.println("Sleep interrupted\r\n" + e);
+        }
+    }
+
+    @Test
+    public void testOneCall(){
+        calculatorEngine.sum(1);
+        assertThat(calculatorEngine.getCalls(), equalTo(1));
+    }
 }
