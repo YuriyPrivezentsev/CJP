@@ -12,4 +12,10 @@
         <nickname>craftsman</nickname>
         <salary>200000</salary>
     </staff>
+    <staff id="4001">
+        <firstname>Alfred</firstname>
+        <lastname>Tarski</lastname>
+        <nickname>mathematician</nickname>
+        <salary>500000</salary>
+    </staff>
 </company>
