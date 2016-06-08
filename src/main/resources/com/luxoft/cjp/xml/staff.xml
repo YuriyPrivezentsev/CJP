@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--<!DOCTYPE company SYSTEM "staff.dtd">-->
 <company>
     <staff id="1001">
         <firstname>Alfred</firstname>

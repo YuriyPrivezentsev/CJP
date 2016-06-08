@@ -1,0 +1,8 @@
+<!ELEMENT company (staff)+>
+        <!ELEMENT staff (firstname,lastname,nickname,salary)>
+        <!ATTLIST staff
+                id CDATA #REQUIRED>
+        <!ELEMENT firstname (#PCDATA)>
+        <!ELEMENT lastname (#PCDATA)>
+        <!ELEMENT nickname (#PCDATA)>
+        <!ELEMENT salary (#PCDATA)>
